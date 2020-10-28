@@ -19,6 +19,6 @@ public class StockFacade {
 
     public List<StockData> getAll() {
         List<StockEntity> stock = stockService.getAll();
-        return (List<StockData>) stockMapper.stockEntityListToStockDataList(stock);
+        return stockMapper.stockEntityListToStockDataList(stock);
     }
 }
