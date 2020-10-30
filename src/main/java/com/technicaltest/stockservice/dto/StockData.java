@@ -1,5 +1,6 @@
 package com.technicaltest.stockservice.dto;
 
+import com.technicaltest.stockservice.utils.StatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,6 @@ public class StockData {
 
     private Integer quantity;
 
-    private String status;
+    private StatusEnum status;
 
 }

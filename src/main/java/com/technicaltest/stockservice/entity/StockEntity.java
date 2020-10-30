@@ -1,5 +1,6 @@
 package com.technicaltest.stockservice.entity;
 
+import com.technicaltest.stockservice.utils.StatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class StockEntity {
 
     private Integer quantity;
 
-    private String status;
+    private StatusEnum status;
 
     @PrePersist
     public void prePersist() {

@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface StockRepository extends CrudRepository<StockEntity, Integer> {
+public interface StockRepository extends CrudRepository<StockEntity, Long> {
 
     List<StockEntity> findAll();
 
