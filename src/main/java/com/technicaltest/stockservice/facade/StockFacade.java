@@ -17,8 +17,8 @@ public class StockFacade {
     @Autowired
     private StockMapper stockMapper;
 
-    public List<StockData> getAll() {
-        List<StockEntity> stock = stockService.getAll();
+    public List<StockData> getByProductId(Long productId) {
+        List<StockEntity> stock = stockService.getByProductId(productId);
         return stockMapper.stockEntityListToStockDataList(stock);
     }
 }

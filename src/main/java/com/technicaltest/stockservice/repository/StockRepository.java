@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface StockRepository extends CrudRepository<StockEntity, Long> {
 
-    List<StockEntity> findAll();
+    List<StockEntity> findByProductId(Long productId);
 
 }
