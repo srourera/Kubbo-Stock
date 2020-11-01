@@ -43,4 +43,12 @@ public class StockFacade {
         StockEntity stock = stockService.save(requestBody);
         return stockMapper.stockEntityToStockData(stock);
     }
+
+    public void delete(Long stockId) {
+        stockService.delete(stockId);
+    }
+
+    public void deleteByProductId(Long productId) {
+        stockService.deleteByProductId(productId);
+    }
 }
