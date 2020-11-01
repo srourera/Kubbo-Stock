@@ -6,7 +6,9 @@ import com.technicaltest.stockservice.mapper.StockMapper;
 import com.technicaltest.stockservice.service.StockService;
 import com.technicaltest.stockservice.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -32,10 +34,10 @@ public class StockFacade {
         return stockMapper.stockEntityToStockData(stock);
     }
 
-    public StockData edit(Long stockId,StockData stockData) throws Exception {
+    public StockData edit(Long stockId,StockData stockData) {
         StockEntity existing = stockService.getById(stockId);
         if(Utils.isEmpty(existing.getId())){
-            throw new Exception("Stock not found");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"This stock doens't exist");
         }
         StockEntity requestBody = stockMapper.stockDataToStockEntity(stockData);
         requestBody.setId(existing.getId());
@@ -45,7 +47,11 @@ public class StockFacade {
     }
 
     public void delete(Long stockId) {
-        stockService.delete(stockId);
+        try {
+            stockService.delete(stockId);
+        } catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"This stock doens't exist");
+        }
     }
 
     public void deleteByProductId(Long productId) {
